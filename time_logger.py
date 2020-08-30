@@ -1,5 +1,4 @@
 from Week import Day, Week, save_log, load_log, save_day_to_log
-from timeDisplays import displayWeek
 from datetime import date, datetime
 
 SAVEFILE = 'time_log_save.txt'  #'time_log_save.txt'
@@ -39,7 +38,7 @@ print('\n\n')
 print("Welcome to TimeLogger")
 print("Todays date: {:%m/%d/%Y}\n".format(today))
 
-displayWeek(w)
+w.displayWeek()
 
 print('\n\n')
 while True:

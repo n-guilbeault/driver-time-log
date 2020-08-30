@@ -232,13 +232,13 @@ class Week:
 Indeces of recorded days: {}
 		""".format(self.startDate, self.endDate, daysRecorded)
 
-        def displayWeek(self):
+    def displayWeek(self):
+        print()
+        for day in self.days:
+            print(day.date.strftime('| %m/%d'), end=' ')
             print()
-            for day in self.days:
-                print(day.date.strftime('| %m/%d'), end=' ')
-                print()
-                calendar.setfirstweekday(6)
-                print(calendar.weekheader(7))
+            calendar.setfirstweekday(6)
+            print(calendar.weekheader(7))
 
 
 def save_log(logDict, fileName):
