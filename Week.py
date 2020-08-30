@@ -28,9 +28,9 @@ class Day:
         self.sickOpersonal = sickOpersonal
         self.startTime = startTime
         self.endTime = endTime
-        try:
-            if startTime != datetime(1111, 11, 11) and endTime != datetime(
-                    1111, 11, 11):
+        
+        try: # defining total time
+            if startTime != DEFAULTDATE and endTime != DEFAULTDATE:
                 self.totalTime = endTime - startTime
             elif self.sickOpersonal == True:
                 self.totalTime = timedelta(hours=8)
@@ -39,6 +39,7 @@ class Day:
         except TypeError as err:
             print(err)
             self.totalTime = timedelta(0)
+        
         self.lunchStart = lunchStart
         self.lunchEnd = lunchEnd
         self.break1 = break1
@@ -73,7 +74,7 @@ class Day:
 
     def setStartTime(self, startTime):
         self.startTime = startTime
-        if startTime == datetime(1111, 11, 11):
+        if startTime == DEFAULTDATE:
             self.recordCheck = False
         else:
             self.recordCheck = True
@@ -232,13 +233,20 @@ class Week:
 Indeces of recorded days: {}
 		""".format(self.startDate, self.endDate, daysRecorded)
 
-    def displayWeek(self):
-        print()
-        for day in self.days:
-            print(day.date.strftime('| %m/%d'), end=' ')
-            print()
-            calendar.setfirstweekday(6)
-            print(calendar.weekheader(7))
+        def displayWeek(Week):
+	print()
+	for day in Week.days:
+		print(day.date.strftime('| %m/%d'), end = ' ')
+	print()
+	calendar.setfirstweekday(6)
+	print(calendar.weekheader(7))
+
+	for day in Week.days:
+		if day.recordCheck:
+			rc = 'X'
+		else:
+			rc = ' '
+		print('  [{}]  '.format(rc), end = ' ')
 
 
 def save_log(logDict, fileName):
