@@ -7,7 +7,8 @@ SAVEFILE = 'time_log_save.txt'  #'time_log_save.txt'
 
 def string_to_date(string):
 	return datetime.strptime(string, '%m/%d/%Y %H:%M')
-	
+
+
 def string_to_bool(string):
 	if string in ('f', 'F', 'false', 'False'):
 		return bool(False)
@@ -24,14 +25,7 @@ bd = Day(bdDate)
 dayLogs = {'19800311': bd}
 w = Week(d)
 
-'''
-print(dayLogs)
-for day in w.days:
-	save_day_to_log(day, dayLogs)
-print(dayLogs)
-for day in dayLogs.values():
-	print(day)
-'''
+
 
 
 print('\n\n')
